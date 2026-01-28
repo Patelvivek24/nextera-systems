@@ -1,0 +1,38 @@
+.header {
+  background: var(--color-background);
+  border-bottom: 1px solid rgba(23, 23, 23, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  min-height: 72px;
+}
+
+.logo {
+  color: var(--color-foreground);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.link {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--color-foreground);
+}
