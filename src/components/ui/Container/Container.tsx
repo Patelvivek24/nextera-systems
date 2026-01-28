@@ -1,14 +1,15 @@
-import styles from "./Container.module.scss";
+import { Container as BootstrapContainer } from "react-bootstrap";
 
 interface ContainerProps {
   children: React.ReactNode;
   className?: string;
+  fluid?: boolean;
 }
 
-export default function Container({ children, className }: ContainerProps) {
-  const containerClassName = className
-    ? `${styles.container} ${className}`
-    : styles.container;
-
-  return <div className={containerClassName}>{children}</div>;
+export default function Container({ children, className, fluid }: ContainerProps) {
+  return (
+    <BootstrapContainer fluid={fluid} className={className}>
+      {children}
+    </BootstrapContainer>
+  );
 }

@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div className={styles.page}>
       <SiteHeader />
-      <main className={styles.main}>
+      <main className={`${styles.main} w-100`}>
         <Hero />
       </main>
       <SiteFooter />

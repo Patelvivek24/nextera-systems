@@ -1,33 +1,67 @@
 .button {
+  font-family: var(--font-body), sans-serif;
   align-items: center;
   border: 1px solid transparent;
   border-radius: 999px;
   display: inline-flex;
-  font-size: 0.95rem;
+  font-size: 16px;
   font-weight: 600;
-  gap: 0.5rem;
+  gap: 8px;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
+  padding: 16px 32px;
   text-decoration: none;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   width: fit-content;
+  outline: none !important;
+}
+
+.button:hover,
+.button:focus,
+.button:active,
+.button:focus-visible {
+  outline: none !important;
+  border-color: transparent !important;
 }
 
 .primary {
-  background: var(--color-foreground);
+  background: linear-gradient(0deg, #6DBEB6, #6DBEB6),
+    radial-gradient(56.5% 93.25% at 85.58% 87.5%, #E8F9FF 0%, rgba(109, 190, 182, 0.6) 100%),
+    radial-gradient(59.86% 98.77% at 88.94% 43.75%, rgba(173, 236, 255, 0.5) 0%, rgba(109, 190, 182, 0.3) 100%),
+    radial-gradient(37.39% 69.19% at 107.79% 0%, #ADECFF 0%, rgba(109, 190, 182, 0) 100%),
+    radial-gradient(38.44% 74.52% at 7.72% 28.75%, #EAFAFF 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(45.33% 46.43% at 41.69% 50%, rgba(109, 190, 182, 0) 0%, #71B8B1 100%);
+  border: 0.5px solid rgba(224, 251, 255, 1);
+  box-shadow: 0px 0px 9.36px 0px rgba(185, 230, 226, 1) inset,
+    0px 0px 8px 0px rgba(109, 190, 182, 1) inset,
+    0px 9.36px 6.24px -3.12px rgba(229, 240, 239, 1),
+    0px 9.36px 7.8px -6.24px rgba(227, 233, 232, 1),
+    0px 7px 7.8px -6.24px rgba(231, 249, 255, 0.71);
   color: var(--color-background);
 }
 
 .primary:hover {
-  background: #2a2a2a;
+  background: linear-gradient(0deg, #6DBEB6, #6DBEB6),
+    radial-gradient(56.5% 93.25% at 85.58% 87.5%, #E8F9FF 0%, rgba(109, 190, 182, 0.6) 100%),
+    radial-gradient(59.86% 98.77% at 88.94% 43.75%, rgba(173, 236, 255, 0.5) 0%, rgba(109, 190, 182, 0.3) 100%),
+    radial-gradient(37.39% 69.19% at 107.79% 0%, #ADECFF 0%, rgba(109, 190, 182, 0) 100%),
+    radial-gradient(38.44% 74.52% at 7.72% 28.75%, #EAFAFF 0%, rgba(255, 255, 255, 0) 100%),
+    radial-gradient(45.33% 46.43% at 41.69% 50%, rgba(109, 190, 182, 0) 0%, #71B8B1 100%);
+  transform: translateY(-1px);
+  box-shadow: 0px 0px 9.36px 0px rgba(185, 230, 226, 1) inset,
+    0px 0px 8px 0px rgba(109, 190, 182, 1) inset,
+    0px 11px 8px -3.12px rgba(229, 240, 239, 1),
+    0px 11px 9px -6.24px rgba(227, 233, 232, 1),
+    0px 9px 9px -6.24px rgba(231, 249, 255, 0.85);
+  border-color: rgba(224, 251, 255, 1) !important;
+  outline: none !important;
 }
 
 .ghost {
   background: transparent;
-  border-color: var(--color-foreground);
-  color: var(--color-foreground);
+  border-color: var(--color-primary-brand);
+  color: var(--color-primary-brand);
 }
 
 .ghost:hover {
-  background: rgba(23, 23, 23, 0.08);
+  background: rgba(43, 63, 124, 0.08);
 }

@@ -1,28 +1,59 @@
+"use client";
+
 import Link from "next/link";
+import { Button as BootstrapButton } from "react-bootstrap";
 import styles from "./Button.module.scss";
 
-type ButtonVariant = "primary" | "ghost";
+type ButtonVariant = "primary" | "secondary" | "outline-primary" | "outline-secondary" | "ghost";
 
 interface ButtonProps {
   label: string;
   href?: string;
   variant?: ButtonVariant;
+  size?: "sm" | "lg";
+  className?: string;
+  type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
-export default function Button({ label, href, variant = "primary" }: ButtonProps) {
-  const className = `${styles.button} ${styles[variant]}`;
+export default function Button({ 
+  label, 
+  href, 
+  variant = "primary", 
+  size,
+  className,
+  type = "button",
+  onClick
+}: ButtonProps) {
+  const buttonClassName = className 
+    ? `${styles.button} ${styles[variant]} ${className}` 
+    : `${styles.button} ${styles[variant]}`;
+
+  const bootstrapVariant = variant === "ghost" ? "outline-primary" : variant;
 
   if (href) {
     return (
-      <Link className={className} href={href}>
+      <BootstrapButton
+        as={Link}
+        href={href}
+        variant={bootstrapVariant}
+        size={size}
+        className={buttonClassName}
+      >
         {label}
-      </Link>
+      </BootstrapButton>
     );
   }
 
   return (
-    <button className={className} type="button">
+    <BootstrapButton
+      variant={bootstrapVariant}
+      size={size}
+      className={buttonClassName}
+      type={type}
+      onClick={onClick}
+    >
       {label}
-    </button>
+    </BootstrapButton>
   );
 }

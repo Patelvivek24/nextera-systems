@@ -1,18 +1,87 @@
+/* Bootstrap CSS */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Font Face Declarations */
+@font-face {
+  font-family: 'Milgalita';
+  src: url('/font/Milgalita.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'FreedomDestiny';
+  src: url('/font/FreedomDestiny.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Normaliq';
+  src: url('/font/Normaliq-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
+  /* Core Brand Colors */
+  --color-primary-brand: #2B3F7C; /* Deep Tech Blue */
+  --color-secondary-brand: #3B6987; /* Steel Blue */
+  --color-accent: #71B8B1; /* Teal Cyan */
+  --color-accent-light: #479997; /* Aqua Teal */
+  --color-dark-base: #131E2C; /* Midnight Navy */
+  --color-neutral: #32415A; /* Slate Blue Grey */
+
+  /* Background Colors */
   --color-background: #ffffff;
-  --color-foreground: #171717;
-  --color-muted: #5f6368;
+  --color-background-alt: #F4F7FB; /* Section Background (Alt) */
+  --color-background-dark: #131E2C; /* Dark Sections */
+
+  /* Text Colors */
+  --color-foreground: #131E2C; /* Primary Text */
+  --color-text-primary: #131E2C;
+  --color-text-muted: #32415A; /* Muted Text */
+
+  /* Gradients */
+  --gradient-primary-brand: linear-gradient(135deg, #2B3F7C, #3B6987);
+  --gradient-tech: linear-gradient(135deg, #3B6987, #71B8B1);
+  --gradient-premium: linear-gradient(135deg, #131E2C, #2B3F7C);
+  --gradient-soft-ui: linear-gradient(135deg, #F4F7FB, #E8F1F4);
+
+  /* Fonts */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-hero-title: 'Milgalita', sans-serif;
+  --font-section-title: 'FreedomDestiny', sans-serif;
+  --font-body: 'Normaliq', sans-serif;
+
 }
 
 body {
   background: var(--color-background);
   color: var(--color-foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-size: 16px;
   margin: 0;
   min-height: 100%;
   padding: 0;
+}
+
+/* Section Titles - FreedomDestiny font */
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-section-title), sans-serif;
+}
+
+/* Paragraphs, descriptions, and body text - Normaliq-Regular */
+p {
+  font-family: var(--font-body), sans-serif;
 }
 
 *,
