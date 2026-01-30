@@ -1,0 +1,180 @@
+.section {
+    padding: 6rem 1.5rem;
+    background-color: var(--color-background-alt);
+    position: relative;
+    overflow: hidden;
+
+    // Subtle background elements
+    &::before {
+        content: '';
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(113, 184, 177, 0.08) 0%, transparent 70%);
+        z-index: 0;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -150px;
+        left: -150px;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(43, 63, 124, 0.05) 0%, transparent 70%);
+        z-index: 0;
+    }
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    h2 {
+        font-size: 3rem;
+        color: var(--color-primary-brand);
+        margin-bottom: 1rem;
+        font-weight: 700;
+    }
+
+    p {
+        font-size: 1.25rem;
+        color: var(--color-text-muted);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr); // 2x2 grid for 4 items looks nice
+    }
+}
+
+// Card Styles
+.card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    height: 100%;
+    transition: box-shadow 0.3s ease;
+
+    &:hover {
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        border-color: rgba(113, 184, 177, 0.3);
+    }
+}
+
+.problemArea {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px dashed rgba(50, 65, 90, 0.15);
+
+    .iconWrapper {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background-color: rgba(239, 68, 68, 0.1); // Soft red for problem
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #ef4444;
+    }
+
+    .content {
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #ef4444; // Warning color for problem
+            margin: 0 0 0.25rem 0;
+            font-family: var(--font-body); // Use body font for smaller headings
+        }
+
+        p {
+            margin: 0;
+            color: var(--color-text-muted);
+            font-size: 1rem;
+        }
+    }
+}
+
+.transitionArea {
+    display: flex;
+    justify-content: center;
+    margin: -0.75rem 0;
+    position: relative;
+    z-index: 2;
+
+    .arrow {
+        background: var(--color-background-alt);
+        color: var(--color-neutral);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.solutionArea {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .iconWrapper {
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        background-color: rgba(113, 184, 177, 0.15); // Accent light for solution
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-accent); // Brand accent color
+    }
+
+    .content {
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary-brand);
+            margin: 0 0 0.5rem 0;
+            font-family: var(--font-section-title);
+        }
+
+        p {
+            margin: 0;
+            color: var(--color-text-primary);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    }
+}
