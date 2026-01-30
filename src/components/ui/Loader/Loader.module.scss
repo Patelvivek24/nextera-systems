@@ -1,0 +1,54 @@
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Semi-transparent white for glassmorphism base */
+    backdrop-filter: blur(10px);
+    /* Strong blur for the "proper" feel */
+    display: grid;
+    place-items: center;
+    transition: opacity 0.8s ease-out, visibility 0.8s;
+
+    /* Initial state is visible, handled by React state for removal/fade */
+    opacity: 1;
+    visibility: visible;
+
+    &.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+/* Modern Gravity-Pulse Loader */
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    grid-area: 1/1;
+    --c: no-repeat radial-gradient(farthest-side, var(--color-primary-brand, #2563eb) 92%, #0000);
+    background:
+        var(--c) 50% 0,
+        var(--c) 50% 100%,
+        var(--c) 100% 50%,
+        var(--c) 0 50%;
+    background-size: 12px 12px;
+    animation: l12 1s infinite;
+}
+
+.loader::after {
+    animation-delay: -0.5s;
+    --c: no-repeat radial-gradient(farthest-side, var(--color-secondary-brand, #60a5fa) 92%, #0000);
+}
+
+@keyframes l12 {
+    100% {
+        inset: -10px
+    }
+}

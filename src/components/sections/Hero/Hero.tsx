@@ -28,9 +28,9 @@ export default function Hero() {
             <Link href="https://cal.com/nexterasystems/demo" className={styles.btnPrimary}>
               Request a Demo
             </Link>
-            <Link href="mailto:sales@nexterasystems.com" className={styles.btnSecondary}>
+            {/* <Link href="mailto:sales@nexterasystems.com" className={styles.btnSecondary}>
               Talk to an Expert
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
