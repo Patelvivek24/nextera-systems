@@ -1,4 +1,4 @@
-import { Hero, SiteFooter, SiteHeader, WhatWeSolve } from "../components";
+import { Hero, SiteFooter, SiteHeader, WhatWeSolve, KeyFeatures } from "../components";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -8,6 +8,7 @@ export default function Home() {
       <main className={`${styles.main} w-100`}>
         <Hero />
         <WhatWeSolve />
+        <KeyFeatures />
       </main>
       <SiteFooter />
     </div>
