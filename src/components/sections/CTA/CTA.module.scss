@@ -1,0 +1,265 @@
+.ctaSection {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 8rem 2rem;
+    background-color: var(--color-background-alt);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        padding: 4rem 1.5rem;
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    position: relative;
+    z-index: 2;
+    flex-direction: column;
+    /* Stack content vertically */
+    text-align: center;
+    /* Center text */
+}
+
+.contentWrapper {
+    width: 100%;
+    max-width: 800px;
+    /* Increased max-width for centered layout */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center children horizontally */
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+
+    &.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.heading {
+    font-family: var(--font-section-title);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--color-primary-brand);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+
+    @media (max-width: 768px) {
+        font-size: 2.25rem;
+    }
+}
+
+.subtext {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+    max-width: 600px;
+    /* Increased width for better readability when centered */
+    margin: 0 auto;
+    /* Center block if needed */
+}
+
+.buttonGroup {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    @media (max-width: 576px) {
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Space content */
+    padding: 0.5rem 0.5rem 0.5rem 1.75rem;
+    /* Adjusted padding */
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    /* Pill shape */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    min-width: 220px;
+    /* Ensure buttons have some width */
+
+    .iconWrapper {
+        margin-left: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #ffffff;
+        /* White circle background */
+        color: var(--color-primary-brand);
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+
+        .iconWrapper {
+            transform: translateX(4px);
+        }
+    }
+}
+
+.btnPrimary {
+    background: var(--color-primary-brand);
+    /* Solid color for potential contrast */
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(43, 63, 124, 0.3);
+
+    &:hover {
+        box-shadow: 0 8px 25px rgba(43, 63, 124, 0.4);
+        background: var(--color-dark-base);
+        /* Darken on hover */
+    }
+}
+
+.btnSecondary {
+    background-color: #ffffff;
+    color: var(--color-primary-brand);
+    border: 1px solid var(--color-text-muted);
+    /* Distinct border */
+
+    .iconWrapper {
+        background-color: var(--color-background-alt);
+        /* Light gray circle */
+        color: var(--color-primary-brand);
+    }
+
+    &:hover {
+        background-color: var(--color-background-alt);
+        border-color: var(--color-primary-brand);
+    }
+}
+
+
+/* Geometric Background Animation */
+.geometricBackground {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 400px;
+    width: 100%;
+    pointer-events: none;
+    /* Let clicks pass through if needed */
+
+    @media (max-width: 992px) {
+        height: 300px;
+        width: 100%;
+    }
+}
+
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(113, 184, 177, 0.2);
+    /* Accent color with opacity */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulseScale 8s infinite ease-in-out;
+}
+
+.circle:nth-child(1) {
+    width: 150px;
+    height: 150px;
+    border-color: rgba(43, 63, 124, 0.1);
+    /* Primary color */
+    animation-delay: 0s;
+}
+
+.circle:nth-child(2) {
+    width: 250px;
+    height: 250px;
+    border-color: rgba(59, 105, 135, 0.15);
+    /* Secondary color */
+    animation-delay: 1.5s;
+}
+
+.circle:nth-child(3) {
+    width: 350px;
+    height: 350px;
+    border-color: rgba(113, 184, 177, 0.1);
+    /* Accent color */
+    animation-delay: 3s;
+}
+
+.circle:nth-child(4) {
+    width: 450px;
+    height: 450px;
+    border-color: rgba(43, 63, 124, 0.05);
+    animation-delay: 4.5s;
+}
+
+.centerDot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-tech);
+    border-radius: 50%;
+    box-shadow: 0 0 20px rgba(113, 184, 177, 0.6);
+    z-index: 1;
+    animation: pulseGlow 3s infinite alternate;
+}
+
+@keyframes pulseScale {
+    0% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0.9);
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulseGlow {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        box-shadow: 0 0 20px rgba(113, 184, 177, 0.6);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.2);
+        box-shadow: 0 0 40px rgba(113, 184, 177, 0.8);
+    }
+}
