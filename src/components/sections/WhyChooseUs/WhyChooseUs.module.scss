@@ -1,0 +1,127 @@
+.section {
+    padding: 6rem 0;
+    background-color: var(--color-background-alt);
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+        padding: 4rem 0;
+    }
+}
+
+.header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 4rem;
+
+    .title {
+        color: var(--color-primary-brand);
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+
+        @media (max-width: 768px) {
+            font-size: 2rem;
+        }
+    }
+
+    .description {
+        color: var(--color-text-muted);
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    /* Make the grid responsive */
+    @media (max-width: 992px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.card {
+    background: var(--color-background);
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+
+    /* Feature cards can span differently if needed, but a simple grid is best for 5 items. 
+     Maybe center the last two if wanted, but standard grid is safer.
+  */
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(43, 63, 124, 0.1);
+        /* Using brand color in shadow */
+        border-color: rgba(113, 184, 177, 0.3);
+        /* Accent color border on hover */
+
+        .iconWrapper {
+            background: var(--gradient-tech);
+            color: #fff;
+        }
+    }
+}
+
+.visible {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.iconWrapper {
+    width: 64px;
+    height: 64px;
+    background: rgba(43, 63, 124, 0.05);
+    /* Light primary brand tint */
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary-brand);
+    transition: all 0.3s ease;
+
+    .icon {
+        stroke-width: 1.5px;
+    }
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1rem;
+    font-family: var(--font-section-title);
+}
+
+.cardDescription {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    margin: 0;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
