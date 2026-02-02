@@ -4,3 +4,4 @@ export { default as KeyFeatures } from "./KeyFeatures/KeyFeatures";
 export { default as CTA } from "./CTA/CTA";
 export { default as WhyChooseUs } from "./WhyChooseUs/WhyChooseUs";
 export { default as TrustSignals } from "./TrustSignals/TrustSignals";
+export { default as ProductOverview } from "./ProductOverview/ProductOverview";

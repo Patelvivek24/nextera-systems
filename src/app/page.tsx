@@ -1,4 +1,4 @@
-import { Hero, SiteFooter, SiteHeader, WhatWeSolve, KeyFeatures, WhyChooseUs, CTA, TrustSignals } from "../components";
+import { Hero, SiteFooter, SiteHeader, WhatWeSolve, KeyFeatures, WhyChooseUs, CTA, TrustSignals, ProductOverview } from "../components";
 import styles from "./page.module.scss";
 
 export default function Home() {
@@ -9,6 +9,7 @@ export default function Home() {
         <Hero />
         <TrustSignals />
         <WhatWeSolve />
+        <ProductOverview />
         <KeyFeatures />
         <WhyChooseUs />
         <CTA />
