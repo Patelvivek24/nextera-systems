@@ -1,53 +1,38 @@
 .section {
-    padding: 6rem 1.5rem;
-    background-color: var(--color-background-alt);
+    padding: 128px 0;
+    background: linear-gradient(180deg, var(--color-background-alt) 0%, var(--color-background) 100%);
     position: relative;
     overflow: hidden;
-
-    // Subtle background elements
-    &::before {
-        content: '';
-        position: absolute;
-        top: -200px;
-        right: -200px;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(circle, rgba(113, 184, 177, 0.08) 0%, transparent 70%);
-        z-index: 0;
-    }
-
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: -150px;
-        left: -150px;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(circle, rgba(43, 63, 124, 0.05) 0%, transparent 70%);
-        z-index: 0;
-    }
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 24px;
     position: relative;
     z-index: 1;
 }
 
 .header {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 2;
 
     h2 {
-        font-size: 3rem;
-        color: var(--color-primary-brand);
-        margin-bottom: 1rem;
+        font-size: 40px;
         font-weight: 700;
+        color: var(--color-foreground);
+        margin-bottom: 16px;
+        letter-spacing: -0.02em;
+
+        @media (min-width: 768px) {
+            font-size: 56px;
+        }
     }
 
     p {
-        font-size: 1.25rem;
+        font-size: 18px;
         color: var(--color-text-muted);
         max-width: 600px;
         margin: 0 auto;
@@ -57,124 +42,142 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2rem;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    position: relative;
 
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 1px;
+        background: linear-gradient(180deg,
+                transparent,
+                rgba(59, 130, 246, 0.2),
+                rgba(59, 130, 246, 0.2),
+                transparent);
+        transform: translateX(-50%);
+        display: none;
 
-    @media (min-width: 1024px) {
-        grid-template-columns: repeat(2, 1fr); // 2x2 grid for 4 items looks nice
-    }
-}
-
-// Card Styles
-.card {
-    background: white;
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    height: 100%;
-    transition: box-shadow 0.3s ease;
-
-    &:hover {
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-        border-color: rgba(113, 184, 177, 0.3);
+        @media (min-width: 992px) {
+            display: block;
+        }
     }
 }
 
-.problemArea {
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px dashed rgba(50, 65, 90, 0.15);
+.comparisonRow {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: stretch;
 
-    .iconWrapper {
-        flex-shrink: 0;
-        width: 48px;
-        height: 48px;
-        background-color: rgba(239, 68, 68, 0.1); // Soft red for problem
-        border-radius: 12px;
-        display: flex;
+    @media (min-width: 992px) {
+        grid-template-columns: 1fr 60px 1fr;
         align-items: center;
-        justify-content: center;
-        color: #ef4444;
-    }
-
-    .content {
-        h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #ef4444; // Warning color for problem
-            margin: 0 0 0.25rem 0;
-            font-family: var(--font-body); // Use body font for smaller headings
-        }
-
-        p {
-            margin: 0;
-            color: var(--color-text-muted);
-            font-size: 1rem;
-        }
+        gap: 0;
     }
 }
 
-.transitionArea {
+.card {
+    background: var(--color-background);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 32px;
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+
+    &.problem {
+        border-left: 4px solid #ef4444;
+        background: linear-gradient(145deg, rgba(239, 68, 68, 0.02), var(--color-background));
+    }
+
+    &.solution {
+        border-left: 4px solid #10b981;
+        background: linear-gradient(145deg, rgba(16, 185, 129, 0.02), var(--color-background));
+        box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.1);
+    }
+}
+
+.connector {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin: -0.75rem 0;
+    position: relative;
+    height: 40px;
+
+    @media (min-width: 992px) {
+        height: auto;
+    }
+}
+
+.connectorIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--color-text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
     z-index: 2;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
 
-    .arrow {
-        background: var(--color-background-alt);
-        color: var(--color-neutral);
-        border: 1px solid rgba(0, 0, 0, 0.05);
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    @media (min-width: 992px) {
+        width: 40px;
+        height: 40px;
     }
 }
 
-.solutionArea {
+.content {
     display: flex;
+    gap: 24px;
     align-items: flex-start;
-    gap: 1rem;
 
     .iconWrapper {
         flex-shrink: 0;
         width: 48px;
         height: 48px;
-        background-color: rgba(113, 184, 177, 0.15); // Accent light for solution
         border-radius: 12px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: var(--color-accent); // Brand accent color
+
+        &.problemIcon {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        &.solutionIcon {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
     }
 
-    .content {
+    .textContent {
         h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--color-primary-brand);
-            margin: 0 0 0.5rem 0;
-            font-family: var(--font-section-title);
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            color: var(--color-foreground);
         }
 
         p {
+            font-size: 15.2px;
+            color: var(--color-text-muted);
             margin: 0;
-            color: var(--color-text-primary);
-            font-size: 1rem;
             line-height: 1.5;
         }
+    }
+}
+
+[data-theme='dark'] {
+    .card {
+        background: rgba(255, 255, 255, 0.02);
+        border-color: rgba(255, 255, 255, 0.05);
     }
 }

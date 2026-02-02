@@ -1,18 +1,11 @@
-'use client';
+"use client";
 
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    Unlink,
-    Link as LinkIcon,
-    ClipboardList,
-    GitPullRequestArrow,
-    UserX,
-    UserCheck,
-    EyeOff,
-    Activity,
-    ArrowDown
+    Unlink, Link as LinkIcon, ClipboardList, GitPullRequestArrow,
+    UserX, UserCheck, EyeOff, Activity, ArrowRight
 } from 'lucide-react';
+import { Container } from 'react-bootstrap';
 import styles from './WhatWeSolve.module.scss';
 
 const solutionsData = [
@@ -75,12 +68,12 @@ const containerVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.15
+            staggerChildren: 0.2
         }
     }
 };
 
-const cardVariants = {
+const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
         opacity: 1,
@@ -94,8 +87,8 @@ const cardVariants = {
 
 const WhatWeSolve = () => {
     return (
-        <section className={styles.section}>
-            <div className={styles.container}>
+        <section className={styles.section} aria-label="What We Solve">
+            <Container>
                 <motion.div
                     className={styles.header}
                     initial={{ opacity: 0, y: -20 }}
@@ -103,8 +96,8 @@ const WhatWeSolve = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h2>Turn CRM Challenges into Growth</h2>
-                    <p>Stop wrestling with tools that slow you down. Nextera Systems replaces friction with flow.</p>
+                    <h2>Turn Friction into Flow</h2>
+                    <p>Stop wrestling with tools that slow you down. Nextera Systems eliminates bottlenecks.</p>
                 </motion.div>
 
                 <motion.div
@@ -112,47 +105,56 @@ const WhatWeSolve = () => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-50px" }}
+                    viewport={{ once: true, margin: "-100px" }}
                 >
                     {solutionsData.map((item) => (
                         <motion.div
                             key={item.id}
-                            className={styles.card}
-                            variants={cardVariants}
-                            whileHover={{ scale: 1.02 }}
+                            variants={itemVariants}
+                            className={styles.comparisonRow}
                         >
-                            {/* Problem Section */}
-                            <div className={styles.problemArea}>
-                                <div className={styles.iconWrapper}>
-                                    <item.problem.icon size={24} />
-                                </div>
+                            {/* Problem Card */}
+                            <motion.div
+                                className={`${styles.card} ${styles.problem}`}
+                                whileHover={{ scale: 1.02 }}
+                            >
                                 <div className={styles.content}>
-                                    <h3>{item.problem.title}</h3>
-                                    <p>{item.problem.description}</p>
+                                    <div className={`${styles.iconWrapper} ${styles.problemIcon}`}>
+                                        <item.problem.icon size={24} />
+                                    </div>
+                                    <div className={styles.textContent}>
+                                        <h3>{item.problem.title}</h3>
+                                        <p>{item.problem.description}</p>
+                                    </div>
+                                </div>
+                            </motion.div>
+
+                            {/* Connector */}
+                            <div className={styles.connector}>
+                                <div className={styles.connectorIcon}>
+                                    <ArrowRight size={20} />
                                 </div>
                             </div>
 
-                            {/* Transition Element */}
-                            <div className={styles.transitionArea}>
-                                <div className={styles.arrow} aria-hidden="true">
-                                    <ArrowDown size={16} />
-                                </div>
-                            </div>
-
-                            {/* Solution Section */}
-                            <div className={styles.solutionArea}>
-                                <div className={styles.iconWrapper}>
-                                    <item.solution.icon size={24} />
-                                </div>
+                            {/* Solution Card */}
+                            <motion.div
+                                className={`${styles.card} ${styles.solution}`}
+                                whileHover={{ scale: 1.02 }}
+                            >
                                 <div className={styles.content}>
-                                    <h3>{item.solution.title}</h3>
-                                    <p>{item.solution.description}</p>
+                                    <div className={`${styles.iconWrapper} ${styles.solutionIcon}`}>
+                                        <item.solution.icon size={24} />
+                                    </div>
+                                    <div className={styles.textContent}>
+                                        <h3>{item.solution.title}</h3>
+                                        <p>{item.solution.description}</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </motion.div>
-            </div>
+            </Container>
         </section>
     );
 };

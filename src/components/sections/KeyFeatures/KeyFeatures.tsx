@@ -1,72 +1,160 @@
-'use client';
+"use client";
 
-import React from 'react';
-import {
-    Users,
-    BarChart3,
-    Workflow,
-    PieChart,
-    Link,
-    ShieldCheck
-} from 'lucide-react';
-import styles from './KeyFeatures.module.scss';
+import { motion, useScroll, useTransform, useMotionTemplate, useMotionValue } from "framer-motion";
+import { Zap, Shield, Users, BarChart3, Globe, Smartphone, ArrowRight, Layers, Cpu, Radio } from "lucide-react";
+import styles from "./KeyFeatures.module.scss";
+import { useRef, MouseEvent } from "react";
+import { Container } from "react-bootstrap";
 
 const features = [
     {
-        title: "Lead & Contact Management",
-        description: "Keep all customer information organized and accessible in one centralized database.",
-        icon: Users
+        icon: Zap,
+        title: "Lightning Performance",
+        description: "Optimized for speed with edge computing limits latency to milliseconds.",
+        delay: 0
     },
     {
-        title: "Sales Pipeline Automation",
-        description: "Track deals, stages, and progress in real time to never miss an opportunity.",
-        icon: BarChart3
+        icon: Shield,
+        title: "Bank-Grade Security",
+        description: "SOC2 compliant infrastructure keeps your data safe.",
+        delay: 0.1
     },
     {
-        title: "Workflow Automation",
-        description: "Reduce manual tasks with smart automation that works while you sleep.",
-        icon: Workflow
+        icon: Users,
+        title: "Real-time Collaboration",
+        description: "Multiplayer editing for seamless teamwork.",
+        delay: 0.2
     },
     {
-        title: "Reports & Dashboards",
-        description: "Gain actionable insights with visual analytics and customizable reporting tools.",
-        icon: PieChart
+        icon: BarChart3,
+        title: "Advanced Analytics",
+        description: "Deep insights with predictive AI modeling.",
+        delay: 0.3
     },
     {
-        title: "Integrations",
-        description: "Connect seamlessly with your existing tools like email, calendar, and accounting software.",
-        icon: Link
+        icon: Globe,
+        title: "Global Edge Network",
+        description: "Deployed to 35+ regions worldwide for maximum availability.",
+        delay: 0.4
     },
     {
-        title: "Cloud Security",
-        description: "Enterprise-grade security and reliable access ensuring your data is always safe.",
-        icon: ShieldCheck
+        icon: Smartphone,
+        title: "Mobile First",
+        description: "Responsive interfaces that work perfectly anywhere.",
+        delay: 0.5
     }
 ];
 
-const KeyFeatures = () => {
-    return (
-        <section className={styles.section}>
-            <div className={styles.container}>
-                <div className={styles.header}>
-                    <h2>Everything You Need in One CRM Platform</h2>
-                    <p>Powerful features designed to help your business grow and succeed.</p>
-                </div>
-
-                <div className={styles.grid}>
-                    {features.map((feature, index) => (
-                        <div key={index} className={styles.card}>
-                            <div className={styles.iconWrapper}>
-                                <feature.icon strokeWidth={1.5} />
-                            </div>
-                            <h3 className={styles.cardTitle}>{feature.title}</h3>
-                            <p className={styles.cardDescription}>{feature.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1,
+            delayChildren: 0.2
+        }
+    }
 };
 
-export default KeyFeatures;
+const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            type: "spring" as const,
+            stiffness: 50,
+            damping: 15
+        }
+    }
+};
+
+function FeatureCard({ feature }: { feature: any }) {
+    const mouseX = useMotionValue(0);
+    const mouseY = useMotionValue(0);
+
+    function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
+        const { left, top } = currentTarget.getBoundingClientRect();
+        mouseX.set(clientX - left);
+        mouseY.set(clientY - top);
+    }
+
+    return (
+        <motion.div
+            className={`${styles.card} ${styles[feature.size]}`}
+            variants={cardVariants}
+            onMouseMove={handleMouseMove}
+            whileHover={{ y: -5 }}
+        >
+            <motion.div
+                className={styles.cardGlow}
+                style={{
+                    background: useMotionTemplate`radial-gradient(
+                        650px circle at ${mouseX}px ${mouseY}px,
+                        rgba(10, 197, 178, 0.15),
+                        transparent 80%
+                    )`
+                }}
+            />
+
+            <div className={styles.cardContent}>
+                <div className={styles.headerArea}>
+                    <div className={styles.iconContainer}>
+                        <feature.icon strokeWidth={1.5} size={28} className={styles.icon} />
+                    </div>
+                </div>
+
+                <div className={styles.textArea}>
+                    <h3>{feature.title}</h3>
+                    <p>{feature.description}</p>
+                </div>
+
+                <div className={styles.actionArea}>
+                    <span className={styles.learnMore}>
+                        Explore <ArrowRight size={16} />
+                    </span>
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+export default function KeyFeatures() {
+    const containerRef = useRef(null);
+
+    return (
+        <section className={styles.section} aria-label="Key Features" ref={containerRef}>
+            <Container>
+                <div>
+                    <motion.div
+                        className={styles.header}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, margin: "-100px" }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                        <div className={styles.badgeContainer}>
+                            <span className={styles.badge}>Key Features</span>
+                        </div>
+                        <h2>
+                            Everything You Need in <span className={styles.gradientText}>One CRM Platform</span>
+                        </h2>
+                        <p>Unleash the full potential of your business with our cutting-edge toolkit.</p>
+                    </motion.div>
+
+                    <motion.div
+                        className={styles.bentoGrid}
+                        variants={containerVariants}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, margin: "-100px" }}
+                    >
+                        {features.map((feature, index) => (
+                            <FeatureCard key={index} feature={feature} />
+                        ))}
+                    </motion.div>
+                </div>
+            </Container>
+        </section>
+    );
+}
