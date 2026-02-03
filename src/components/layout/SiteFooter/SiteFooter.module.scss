@@ -240,19 +240,28 @@
   }
 }
 
-.subscribeBtn {
-  background: var(--color-dark-base); // Keep dark button for contrast
-  color: #fff;
+.btnPrimary {
+  background-color: var(--color-accent);
+  color: #ffffff;
   border: none;
-  border-radius: 50px;
-  padding: 12px 24px;
-  font-weight: 500;
+  padding: 16px 36px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 9999px;
   cursor: pointer;
-  white-space: nowrap;
-  transition: background-color 0.2s ease; // Added transition
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(113, 184, 177, 0.4);
+  text-decoration: none;
+  font-family: var(--font-body), sans-serif;
 
   &:hover {
-    background-color: var(--color-primary-brand); // Branded hover
+    background-color: var(--color-accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(113, 184, 177, 0.5);
+  }
+
+  &:active {
+    transform: translateY(0);
   }
 }
 

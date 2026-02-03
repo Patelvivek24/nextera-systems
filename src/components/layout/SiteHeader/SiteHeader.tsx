@@ -9,10 +9,10 @@ import Button from "@/components/ui/Button";
 import styles from "./SiteHeader.module.scss";
 
 const NAV_LINKS = [
-  { label: "Home", href: "/", hasDropdown: true },
-  { label: "Pages", href: "/pages", hasDropdown: true },
-  { label: "Shop", href: "/shop", hasDropdown: true },
-  { label: "Blog", href: "/blog", hasDropdown: true },
+  // { label: "Home", href: "/", hasDropdown: true },
+  { label: "About Us", href: "/#trust-signals", hasDropdown: true },
+  { label: "Solutions", href: "/#what-we-solve", hasDropdown: true },
+  { label: "Features", href: "/#features", hasDropdown: true },
   { label: "Contact", href: "/contact", hasDropdown: false },
 ];
 
@@ -43,10 +43,10 @@ export default function SiteHeader() {
             transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <Navbar.Brand as={Link} href="/" className={styles.logo}>
-              <Image 
-                src="/image/logo.png" 
-                alt="Nextera Systems Logo" 
-                width={150} 
+              <Image
+                src="/image/logo.png"
+                alt="Nextera Systems Logo"
+                width={150}
                 height={40}
                 priority
                 className={`${styles.logoImage} img-fluid`}
@@ -68,9 +68,9 @@ export default function SiteHeader() {
                 whileTap={{ scale: 0.95 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <Button 
-                  label="Get Started" 
-                  href="/get-started" 
+                <Button
+                  label="Get Started"
+                  href="/get-started"
                   variant="primary"
                   className={styles.ctaButton}
                 />

@@ -117,7 +117,7 @@ export default function ProductOverview() {
                             </ul>
 
                             <motion.button
-                                className={styles.ctaButton}
+                                className={styles.btnPrimary}
                                 whileHover={{ scale: 1.03 }}
                                 whileTap={{ scale: 0.97 }}
                                 variants={itemVariants}
@@ -125,6 +125,9 @@ export default function ProductOverview() {
                             >
                                 Explore Platform <ArrowRight size={18} strokeWidth={2.5} />
                             </motion.button>
+                            {/* <Link href="https://cal.com/nexterasystems/demo" className={styles.btnPrimary}>
+                                Request a Demo
+                            </Link> */}
                         </motion.div>
                     </Col>
 

@@ -62,7 +62,7 @@ export default function CTA() {
                         >
                             <motion.a
                                 href="#request-demo"
-                                className={`${styles.btn} ${styles.btnPrimary}`}
+                                className={styles.btnPrimary}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.98 }}
                             >

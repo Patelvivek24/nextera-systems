@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Button as BootstrapButton } from "react-bootstrap";
+import { MouseEventHandler } from "react";
 import styles from "./Button.module.scss";
 
 type ButtonVariant = "primary" | "secondary" | "outline-primary" | "outline-secondary" | "ghost";
@@ -13,20 +14,20 @@ interface ButtonProps {
   size?: "sm" | "lg";
   className?: string;
   type?: "button" | "submit" | "reset";
-  onClick?: () => void;
+  onClick?: MouseEventHandler<HTMLElement>;
 }
 
-export default function Button({ 
-  label, 
-  href, 
-  variant = "primary", 
+export default function Button({
+  label,
+  href,
+  variant = "primary",
   size,
   className,
   type = "button",
   onClick
 }: ButtonProps) {
-  const buttonClassName = className 
-    ? `${styles.button} ${styles[variant]} ${className}` 
+  const buttonClassName = className
+    ? `${styles.button} ${styles[variant]} ${className}`
     : `${styles.button} ${styles[variant]}`;
 
   const bootstrapVariant = variant === "ghost" ? "outline-primary" : variant;
@@ -34,11 +35,12 @@ export default function Button({
   if (href) {
     return (
       <BootstrapButton
-        as={Link}
+        as={Link as any}
         href={href}
         variant={bootstrapVariant}
         size={size}
         className={buttonClassName}
+        onClick={onClick}
       >
         {label}
       </BootstrapButton>

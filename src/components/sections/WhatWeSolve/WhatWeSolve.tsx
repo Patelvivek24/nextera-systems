@@ -87,7 +87,7 @@ const itemVariants = {
 
 const WhatWeSolve = () => {
     return (
-        <section className={styles.section} aria-label="What We Solve">
+        <section className={styles.section} aria-label="What We Solve" id="what-we-solve">
             <Container>
                 <motion.div
                     className={styles.header}

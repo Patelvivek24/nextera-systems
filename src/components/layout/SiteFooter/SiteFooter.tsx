@@ -36,7 +36,7 @@ export default function SiteFooter() {
       {/* Top Divider */}
       <motion.div className={styles.topDivider} initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }} transition={{ duration: 1 }} />
 
-      <Container className={styles.container}>
+      <Container>
         {/* Top Section */}
         <div className={styles.topSection}>
           <div className={styles.topLeft}>
@@ -103,7 +103,7 @@ export default function SiteFooter() {
             <div className={styles.subscribeForm}>
               <input type="email" placeholder="Enter your email" className={styles.subscribeInput} />
               <motion.button
-                className={styles.subscribeBtn}
+                className={styles.btnPrimary}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -111,9 +111,8 @@ export default function SiteFooter() {
               </motion.button>
             </div>
             <div className={styles.legalLinks}>
-              {["Privacy Policy", "Terms and Conditions"].map((link, idx) => (
-                <a key={idx} href="#" className={styles.legalLink}>{link}</a>
-              ))}
+              <a href="/privacy-policy" className={styles.legalLink}>Privacy Policy</a>
+              <a href="/terms-and-conditions" className={styles.legalLink}>Terms and Conditions</a>
             </div>
           </div>
         </div>

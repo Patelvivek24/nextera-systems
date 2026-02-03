@@ -117,7 +117,7 @@ function Card({ item }: { item: typeof signals[0] }) {
 
 export default function TrustSignals() {
     return (
-        <section className={styles.section} aria-label="Trust Signals">
+        <section className={styles.section} aria-label="Trust Signals" id="trust-signals">
             <div className={styles.backgroundGlow} />
             <Container>
                 <div>

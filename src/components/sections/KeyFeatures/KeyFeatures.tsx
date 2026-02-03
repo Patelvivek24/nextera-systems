@@ -123,7 +123,7 @@ export default function KeyFeatures() {
     const containerRef = useRef(null);
 
     return (
-        <section className={styles.section} aria-label="Key Features" ref={containerRef}>
+        <section className={styles.section} aria-label="Key Features" ref={containerRef} id="features">
             <Container>
                 <div>
                     <motion.div
