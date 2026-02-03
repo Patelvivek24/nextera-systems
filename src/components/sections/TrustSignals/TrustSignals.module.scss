@@ -1,8 +1,8 @@
 .section {
-    padding: 128px 0;
+    padding: 120px 0;
     position: relative;
     overflow: hidden;
-    background-color: linear-gradient(180deg, var(--color-background-alt) 0%, var(--color-background) 100%); // Enforce white background
+    background-color: var(--color-background);
 
     // Light, subtle mesh background
     // background-image:

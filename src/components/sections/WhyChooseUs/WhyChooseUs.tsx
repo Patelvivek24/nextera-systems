@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Container } from "react-bootstrap";
 import { Settings, TrendingUp, ShieldCheck, Headset, Lightbulb, ChevronDown } from "lucide-react";
 import styles from "./WhyChooseUs.module.scss";
 
@@ -42,7 +43,7 @@ export default function WhyChooseUs() {
 
     return (
         <section id="why-choose-us" className={styles.section} aria-label="Why Choose Us">
-            <div className={styles.container}>
+            <Container>
                 <motion.div
                     className={styles.header}
                     initial={{ opacity: 0, y: 20 }}
@@ -120,7 +121,7 @@ export default function WhyChooseUs() {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Container>
         </section>
     );
 }
